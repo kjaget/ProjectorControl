@@ -65,73 +65,66 @@ const byte ScreenStop[] = {
 #ifdef DUMP_IR
 void dump(decode_results *results) {
   int count = results->rawlen;
-
-  if (results->decode_type == UNKNOWN) {
-    Serial.println("Could not decode message");
-  } 
-  else {
-    switch(results->decode_type)
-    {
-    case NEC :
-      Serial.print("Decoded NEC: ");
-      break;
-    case SONY :
-      Serial.print("Decoded SONY: ");
-      break;
-    case RC5:
-      Serial.print("Decoded RC5: ");
-      break;
-    case RC6:
-      Serial.print("Decoded RC6: ");
-      break;
-    case DISH :
-      Serial.print("Decoded DISH: ");
-      break;
-    case SHARP :
-      Serial.print("Decoded SHARP: ");
-      break;
-    case PANASONIC :
-      Serial.print("Decoded PANASONIC: ");
-      break;
-    case JVC :
-      Serial.print("Decoded JVC: ");
-      break;
-    case SANYO :
-      Serial.print("Decoded SANYO: ");
-      break;
-    case MITSUBISHI :
-      Serial.print("Decoded MITSUBISHI: ");
-      break;
-    case SAMSUNG :
-      Serial.print("Decoded SAMSUNG: ");
-      break;
-    case LG :
-      Serial.print("Decoded LG: ");
-      break;
-    case UNKNOWN :
-      Serial.print("Decoded UNKNOWN: ");
-      break;
-    }
-    Serial.print(results->value, HEX);
-    Serial.print(" (");
-    Serial.print(results->bits, DEC);
-    Serial.println(" bits)");
+  
+  // Check if the buffer overflowed
+  if (results->overflow) {
+    Serial.println("IR code too long. Edit IRremoteInt.h and increase RAWLEN");
     return;
   }
-  Serial.print("Raw (");
-  Serial.print(count, DEC);
-  Serial.print("): ");
-
-  for (int i = 0; i < count; i++) {
-    if ((i % 2) == 1) {
-      Serial.print(results->rawbuf[i]*USECPERTICK, DEC);
-    } 
-    else {
-      Serial.print(-(int)results->rawbuf[i]*USECPERTICK, DEC);
+  
+  switch (results->decode_type) {
+    default:
+    case UNKNOWN:      Serial.print("UNKNOWN");       break ;
+    case NEC:          Serial.print("NEC");           break ;
+    case SONY:         Serial.print("SONY");          break ;
+    case RC5:          Serial.print("RC5");           break ;
+    case RC6:          Serial.print("RC6");           break ;
+    case DISH:         Serial.print("DISH");          break ;
+    case SHARP:        Serial.print("SHARP");         break ;
+    case JVC:          Serial.print("JVC");           break ;
+    case SANYO:        Serial.print("SANYO");         break ;
+    case MITSUBISHI:   Serial.print("MITSUBISHI");    break ;
+    case SAMSUNG:      Serial.print("SAMSUNG");       break ;
+    case LG:           Serial.print("LG");            break ;
+    case WHYNTER:      Serial.print("WHYNTER");       break ;
+    case AIWA_RC_T501: Serial.print("AIWA_RC_T501");  break ;
+    case PANASONIC:    Serial.print("PANASONIC");     break ;
+    case DENON:        Serial.print("Denon");         break ;
+   }
+   // Panasonic has an Address
+   if (results->decode_type == PANASONIC) {
+    Serial.print(results->address, HEX);
+    Serial.print(":");
+   }
+   Serial.print(results->value, HEX);
+   Serial.print(" (");
+   Serial.print(results->bits, DEC);
+   Serial.println(" bits)");
+   return;
+   
+    Serial.print("Timing[");
+    Serial.print(results->rawlen-1, DEC);
+    Serial.println("]: ");
+  
+    for (int i = 1;  i < results->rawlen;  i++) {
+      unsigned long  x = results->rawbuf[i] * USECPERTICK;
+      if (!(i & 1)) {  // even
+        Serial.print("-");
+        if (x < 1000)  Serial.print(" ") ;
+        if (x < 100)   Serial.print(" ") ;
+        Serial.print(x, DEC);
+      } else {  // odd
+        Serial.print("     ");
+        Serial.print("+");
+        if (x < 1000)  Serial.print(" ") ;
+        if (x < 100)   Serial.print(" ") ;
+        Serial.print(x, DEC);
+        if (i < results->rawlen-1) Serial.print(", "); //',' not needed for last one
+      }
+      if (!(i % 8))  Serial.println("");
     }
-    Serial.print(" ");
-  }
-  Serial.println("");
+    Serial.println("");                    // Newline
+  
 }
 #endif
 
@@ -454,10 +447,4 @@ void loop()
 
   }
 }
-
-
-
-
-
-
 
