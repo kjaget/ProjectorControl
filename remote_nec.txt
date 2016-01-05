@@ -1,0 +1,159 @@
+setup code 104
+#define DUMP_IR
+    case 0x8C7328D7: // PLAY            
+      dump_ir = 1 - dump_ir;
+#ifdef DUMP_IR
+      Serial.println("PLAY");
+#endif
+      break;
+    case 0x8C7308F7: // STOP            
+#ifdef DUMP_IR
+      Serial.println("STOP");
+#endif
+      break;
+    case 0x8C738877: // PAUSE/STILL     
+#ifdef DUMP_IR
+      Serial.println("PAUSE/STILL");
+#endif
+      break;
+    case 0x8C73C837: // FF_>>           
+#ifdef DUMP_IR
+      Serial.println("FF_>>");
+#endif
+      break;
+    case 0x8C7348B7: // <<_REW          
+#ifdef DUMP_IR
+      Serial.println("<<_REW");
+#endif
+      break;
+    case 0x8C73A857: // RECORD          
+#ifdef DUMP_IR
+      Serial.println("RECORD");
+#endif
+      break;
+    case 0x8C73DA25: // OPERATE         
+#ifdef DUMP_IR
+      Serial.println("POWER");
+#endif
+      break;
+    case 0x8C7320DF: // 1               
+#ifdef DUMP_IR
+      Serial.println("1");
+#endif
+      break;
+    case 0x8C73A05F: // 2
+#ifdef DUMP_IR
+      Serial.println("2");
+#endif
+      break;
+    case 0x8C73609F: // 3               
+#ifdef DUMP_IR
+      Serial.println("3");
+#endif
+      break;
+    case 0x8C73E01F: // 4
+#ifdef DUMP_IR
+      Serial.println("4");
+#endif
+      break;
+    case 0x8C7330CF: // 5               
+#ifdef DUMP_IR
+      Serial.println("5");
+#endif
+      break;
+    case 0x8C73B04F: // 6
+#ifdef DUMP_IR
+      Serial.println("6");
+#endif
+      break;
+    case 0x8C73708F: // 7               
+#ifdef DUMP_IR
+      Serial.println("7");
+#endif
+      break;
+    case 0x8C73F00F: // 8
+#ifdef DUMP_IR
+      Serial.println("8");
+#endif
+      break;
+    case 0x8C7338C7: // 9               
+#ifdef DUMP_IR
+      Serial.println("9");
+#endif
+      break;
+    case 0x8C73807F: // CHANNEL_UP
+#ifdef DUMP_IR
+      Serial.println("CHANNEL_UP/ARROW_UP");
+#endif
+      break;
+    case 0x8C7340BF: // CHANNEL_DOWN    
+#ifdef DUMP_IR
+      Serial.println("CHANNEL_DOWN/ARROW_DOWN");
+#endif
+      break;
+    case 0x8C7329D6: // ARROW_RIGHT  
+#ifdef DUMP_IR
+      Serial.println("ARROW_RIGHT");
+#endif
+      break;
+    case 0x8C73A9D6: // ARROW_LEFT  
+#ifdef DUMP_IR
+      Serial.println("ARROW_LEFT");
+#endif
+      break;
+    case 0x8C7310EF: // VTR_V           
+#ifdef DUMP_IR
+      Serial.println("VIDEO");
+#endif
+      break;
+    case 0x8C738A75: // TV_MONITOR      
+#ifdef DUMP_IR
+      Serial.println("TV_MONITOR");
+#endif
+      break;
+    case 0x8C730AF5: // KEY             
+#ifdef DUMP_IR
+      Serial.println("KEY");
+#endif
+      break;
+    case 0x8C739867: // INDEX           
+#ifdef DUMP_IR
+      Serial.println("INDEX");
+#endif
+      break;
+    case 0x8C7322DD: // RESET           
+#ifdef DUMP_IR
+      Serial.println("RESET");
+#endif
+      break;
+    case 0x8C73C23D: // MEMORY          
+#ifdef DUMP_IR
+      Serial.println("MEMORY");
+#endif
+      break;
+    case 0x8C73F807: // ATR             
+#ifdef DUMP_IR
+      Serial.println("ATR");
+#endif
+      break;
+    case 0x8C73629D: // CHECK           
+#ifdef DUMP_IR
+      Serial.println("MENU/GUIDE");
+#endif
+      break;
+    case 0x8C7352AD: // CL              
+#ifdef DUMP_IR
+      Serial.println("EXIT");
+#endif
+      break;
+    case 0x8C73B847: // O/AV            
+#ifdef DUMP_IR
+      Serial.println("O/AV");
+#endif
+      break;
+    case 0x8C73D22D: // OK              
+#ifdef DUMP_IR
+      Serial.println("OK/SELECT");
+#endif
+      break;
+

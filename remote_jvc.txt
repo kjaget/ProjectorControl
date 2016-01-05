@@ -1,0 +1,57 @@
+setup code 41
+
+
+case 0xC2D0: // power                    
+break;
+case 0xC230: // play                     
+break;
+case 0xC260: // forward                  
+break;
+case 0xC2E0: // backward                 
+break;
+case 0xC2C0: // stop                     
+break;
+case 0xC2B0: // pause                    
+break;
+case 0xC2EC: // menu                     
+break;
+case 0xC23C: // ok                       
+break;
+case 0xC26C: // zero4x                   
+break;
+case 0xC233: // itr                      
+break;
+case 0xC298: // pr_up                    
+break;
+case 0xC218: // pr_dn                    
+break;
+case 0xC228: // right                    
+break;
+case 0xC2A8: // left                     
+break;
+case 0xC220: // eject                    
+break;
+case 0xC284: // no_1                     
+break;
+case 0xC244: // no_2                     
+break;
+case 0xC2C4: // no_3                     
+break;
+case 0xC224: // no_4                     
+break;
+case 0xC2A4: // no_5                     
+break;
+case 0xC264: // no_6                     
+break;
+case 0xC2E4: // no_7                     
+break;
+case 0xC214: // no_8                     
+break;
+case 0xC294: // no_9                     
+break;
+case 0xC2CC: // no_0                     
+break;
+case 0xC098: // tvpr_up
+break;
+case 0xC018: // tvpr_dn
+break;
